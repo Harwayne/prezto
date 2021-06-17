@@ -11,3 +11,38 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+
+# History
+HISTFILE=~/.zhistory
+HISTSIZE=100000
+SAVEHIST=100000
+
+# Replace 'less' with vim to get syntax highlighting
+VLESS=$(find /usr/share/vim -name 'less.sh')
+if [ ! -z $VLESS ]; then
+    alias less=$VLESS
+fi
+unset VLESS
+
+# JSON Pretty Print
+unameOut="$(uname -s)"
+case "$unameOut" in
+  Linux*)
+    alias jp="xclip -o -selection clipboard | python3 -m json.tool | xclip -selection clipboard; xclip -o -selection clipboard"
+    ;;
+  Darwin*)
+    alias jp="pbpaste | python3 -m json.tool --json-lines | pbcopy; pbpaste"
+    ;;
+esac
+
+# By adding a space, it allows the next 'argument' to be an alias as well.
+alias watch="watch "
+
+# Alias kubectl to k.
+alias k=kubectl
+source <(kubectl completion zsh)
+source <(kubectl completion zsh | sed s/kubectl/k/g)
+
+# Add the line number.
+alias grep="grep -n"
+
