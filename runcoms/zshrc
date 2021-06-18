@@ -13,7 +13,7 @@ fi
 # Customize to your needs...
 
 # History
-HISTFILE=~/.zhistory
+HISTFILE=~/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
 
