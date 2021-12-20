@@ -38,6 +38,9 @@ esac
 # By adding a space, it allows the next 'argument' to be an alias as well.
 alias watch="watch "
 
+# Use a downloaded version of kubectl, which is much newer than the one bundled
+# with gcloud.
+alias kubectl="${HOME}/bin/kubectl"
 # Alias kubectl to k.
 alias k=kubectl
 source <(kubectl completion zsh)
