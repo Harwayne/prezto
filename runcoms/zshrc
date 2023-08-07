@@ -40,11 +40,13 @@ alias watch="watch "
 
 # Use a downloaded version of kubectl, which is much newer than the one bundled
 # with gcloud.
-alias kubectl="${HOME}/bin/kubectl"
-# Alias kubectl to k.
-alias k=kubectl
-source <(kubectl completion zsh)
-source <(kubectl completion zsh | sed s/kubectl/k/g)
+if [[ -s "${HOME}/bin/kubectl" ]]; then
+  alias kubectl="${HOME}/bin/kubectl"
+  # Alias kubectl to k.
+  alias k=kubectl
+  source <(kubectl completion zsh)
+  source <(kubectl completion zsh | sed s/kubectl/k/g)
+fi
 
 # Add the line number.
 alias grep="grep -n"
@@ -52,5 +54,10 @@ alias grep="grep -n"
 # Optional files. Source if they are present.
 if [[ -s "${HOME}/.work_rc" ]]; then
   source "${HOME}/.work_rc"
+fi
+
+# Rust if it is installed.
+if [[ -s "$HOME/.cargo/env" ]]; then
+  source "$HOME/.cargo/env"
 fi
 
