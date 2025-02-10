@@ -31,4 +31,4 @@
 	shallow = true
 [submodule "modules/prompt/external/garrett"]
 	path = modules/prompt/external/garrett
-	url = https://github.com/Harwayne/zsh-prompt-garrett
+	url = git@github.com:Harwayne/zsh-prompt-garrett.git
